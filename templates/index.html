@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103d32">
+  <meta name="description" content="Touch Grass helps you spend less time on screens and more meaningful time outdoors with weather-aware plans, nearby parks, and nature challenges.">
+  <title>Touch Grass | Outdoor Guide</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#home" data-nav="home" aria-label="Touch Grass home">
+      <span class="brand-mark"><i data-lucide="sprout"></i></span>
+      <span class="brand-copy"><strong>touch grass</strong><small>OUTDOOR GUIDE</small></span>
+    </a>
+    <div class="side-label">YOUR SPACE</div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-page="home"><i data-lucide="layout-dashboard"></i><span>Home</span></button>
+      <button class="nav-item" data-page="conditions"><i data-lucide="cloud-sun"></i><span>Live conditions</span><span class="nav-dot"></span></button>
+      <button class="nav-item" data-page="planner"><i data-lucide="route"></i><span>Plan my outing</span></button>
+      <button class="nav-item" data-page="forecast"><i data-lucide="calendar-days"></i><span>Smart forecast</span></button>
+      <button class="nav-item" data-page="parks"><i data-lucide="map-pinned"></i><span>Nearby parks</span></button>
+      <button class="nav-item" data-page="bingo"><i data-lucide="grid-2x2"></i><span>Nature bingo</span></button>
+      <button class="nav-item" data-page="progress"><i data-lucide="chart-no-axes-combined"></i><span>My progress</span></button>
+    </nav>
+    <div class="side-label side-label-lower">MORE</div>
+    <nav class="main-nav">
+      <button class="nav-item" data-page="about"><i data-lucide="leaf"></i><span>About & settings</span></button>
+    </nav>
+    <div class="sidebar-spacer"></div>
+    <div class="side-nudge">
+      <div class="nudge-art"><i data-lucide="sunrise"></i></div>
+      <p class="nudge-title">A little fresh air goes a long way.</p>
+      <p class="nudge-text">Your next good moment might be outside.</p>
+      <button class="text-button" data-nav="planner">Make a plan <i data-lucide="arrow-up-right"></i></button>
+    </div>
+    <div class="profile-mini">
+      <div class="avatar" id="sidebarAvatar">T</div>
+      <div class="profile-mini-copy"><strong id="sidebarName">Tanmay</strong><span>Nature explorer</span></div>
+      <button class="icon-button subtle" aria-label="Open settings" data-nav="about"><i data-lucide="settings-2"></i></button>
+    </div>
+  </aside>
+
+  <div class="main-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu icon-button" id="mobileMenu" aria-label="Toggle menu"><i data-lucide="menu"></i></button>
+        <div class="breadcrumbs"><span>Workspace</span><i data-lucide="chevron-right"></i><strong id="crumbCurrent">Home</strong></div>
+      </div>
+      <div class="topbar-right">
+        <div class="accessibility-tools" aria-label="Accessibility settings">
+          <label class="language-switch" title="Choose website language">
+            <i data-lucide="languages" aria-hidden="true"></i>
+            <select id="languageSelect" aria-label="Choose language">
+              <option value="en">English</option>
+              <option value="gu">ગુજરાતી</option>
+              <option value="hi">हिन्दी</option>
+            </select>
+          </label>
+          <div class="font-controls" role="group" aria-label="Text size controls">
+            <button type="button" id="fontSmaller" aria-label="Decrease text size" title="Decrease text size">A−</button>
+            <span id="fontSizeValue" aria-live="polite">115%</span>
+            <button type="button" id="fontLarger" aria-label="Increase text size" title="Increase text size">A+</button>
+          </div>
+        </div>
+        <div class="location-pill"><i data-lucide="map-pin"></i><input id="topCity" value="Ahmedabad" aria-label="City for live data"><button id="refreshWeather" aria-label="Refresh weather" title="Refresh live data"><i data-lucide="refresh-cw"></i></button></div>
+        <button class="icon-button notification-button" id="notificationButton" title="Outdoor reminder"><i data-lucide="bell"></i><span></span></button>
+        <button class="profile-button" data-nav="about"><span class="avatar small-avatar" id="topAvatar">T</span><span id="topName">Tanmay</span><i data-lucide="chevron-down"></i></button>
+      </div>
+    </header>
+
+    <main class="content-area">
+      <!-- HOME -->
+      <section class="page active" id="page-home" data-title="Home">
+        <div class="page-intro home-intro">
+          <div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR DAILY DOSE OF OUTDOORS</div><h1 id="greetingTitle">A little more outside.<br><span>A little more you.</span></h1><p class="page-lead">Plan a small escape, discover nearby green spaces, and make room for a better kind of screen time.</p></div>
+          <div class="intro-date"><div class="date-icon"><i data-lucide="calendar-days"></i></div><div><strong id="todayDate">Today</strong><span id="todayWeekday">Let's make it a good one</span></div></div>
+        </div>
+
+        <section class="hero-banner">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag"><i data-lucide="sprout"></i> YOUR OUTDOOR RESET</span>
+            <h2>Less screen.<br><span>More green.</span></h2>
+            <p>Fresh air, new places, and tiny moments that make the day feel bigger.</p>
+            <button class="button button-lime" data-nav="planner">Plan my outing <i data-lucide="arrow-up-right"></i></button>
+          </div>
+          <div class="hero-weather-chip"><span class="weather-symbol" id="heroWeatherIcon">☀️</span><div><strong id="heroTemperature">--°</strong><span id="heroCondition">Loading local weather</span></div><i data-lucide="map-pin"></i><small id="heroCity">Ahmedabad</small></div>
+          <div class="hero-bottom-note"><i data-lucide="leaf"></i> YOUR REMINDER TO STEP OUTSIDE</div>
+        </section>
+
+        <div class="feature-grid">
+          <button class="feature-card" data-nav="conditions"><span class="feature-icon sun-icon"><i data-lucide="sun"></i></span><span class="feature-copy"><strong>Check conditions</strong><small>Weather, air quality & UV</small></span><i class="feature-arrow" data-lucide="arrow-up-right"></i></button>
+          <button class="feature-card" data-nav="planner"><span class="feature-icon plan-icon"><i data-lucide="route"></i></span><span class="feature-copy"><strong>Get an AI plan</strong><small>Made for your day</small></span><i class="feature-arrow" data-lucide="arrow-up-right"></i></button>
+          <button class="feature-card" data-nav="parks"><span class="feature-icon park-icon"><i data-lucide="trees"></i></span><span class="feature-copy"><strong>Find green spaces</strong><small>Explore parks nearby</small></span><i class="feature-arrow" data-lucide="arrow-up-right"></i></button>
+          <button class="feature-card" data-nav="bingo"><span class="feature-icon bingo-icon"><i data-lucide="scan-search"></i></span><span class="feature-copy"><strong>Play nature bingo</strong><small>Notice more outdoors</small></span><i class="feature-arrow" data-lucide="arrow-up-right"></i></button>
+        </div>
+
+        <div class="section-heading"><div><div class="eyebrow">THE OUTDOOR SNAPSHOT</div><h2>How's it looking out there?</h2></div><button class="link-button" data-nav="conditions">Full weather report <i data-lucide="arrow-right"></i></button></div>
+        <div class="overview-grid">
+          <article class="card score-card">
+            <div class="card-heading"><div><span class="card-kicker">OUTDOOR SCORE</span><h3>Your go-outside gauge</h3></div><span class="info-icon" title="A simple estimate based on weather, rain, UV, air quality and wind."><i data-lucide="info"></i></span></div>
+            <div class="score-layout"><div class="score-gauge" id="scoreGauge"><div class="score-gauge-inner"><strong id="outdoorScore">--</strong><span>out of 100</span></div></div><div class="score-copy"><span class="status-pill neutral" id="scorePill">Checking conditions</span><p id="scoreAdvice">Getting current weather for your chosen city.</p><button class="text-button" data-nav="forecast">Find the best time <i data-lucide="arrow-up-right"></i></button></div></div>
+            <div class="score-foot"><span><i data-lucide="clock-3"></i> Best time depends on local conditions</span><span id="weatherUpdated">Live data</span></div>
+          </article>
+          <article class="card conditions-card">
+            <div class="card-heading"><div><span class="card-kicker">RIGHT NOW</span><h3>Live conditions</h3></div><span class="tiny-live"><span></span> LIVE</span></div>
+            <div class="metric-grid">
+              <div class="metric-tile"><span class="metric-icon temp"><i data-lucide="thermometer"></i></span><div><small>Temperature</small><strong id="metricTemp">--°C</strong><span id="metricFeels">Feels like --°C</span></div></div>
+              <div class="metric-tile"><span class="metric-icon air"><i data-lucide="wind"></i></span><div><small>Air quality</small><strong id="metricAqi">--</strong><span id="metricAqiLabel">Awaiting data</span></div></div>
+              <div class="metric-tile"><span class="metric-icon uv"><i data-lucide="sun"></i></span><div><small>UV index</small><strong id="metricUv">--</strong><span id="metricUvLabel">Awaiting data</span></div></div>
+              <div class="metric-tile"><span class="metric-icon humidity"><i data-lucide="droplets"></i></span><div><small>Humidity</small><strong id="metricHumidity">--%</strong><span>Relative humidity</span></div></div>
+            </div>
+            <div class="condition-footer"><span><i data-lucide="sunrise"></i> Sunrise <strong id="sunriseTime">--</strong></span><span><i data-lucide="sunset"></i> Sunset <strong id="sunsetTime">--</strong></span></div>
+          </article>
+        </div>
+
+        <div class="two-col-grid dashboard-lower">
+          <article class="card chart-card"><div class="card-heading"><div><span class="card-kicker">THE NEXT FEW HOURS</span><h3>Today's outdoor window</h3><p>Find a comfortable time to step out.</p></div><button class="round-arrow" data-nav="forecast" aria-label="Open forecast"><i data-lucide="arrow-up-right"></i></button></div><div class="chart-wrap"><canvas id="homeHourlyChart" aria-label="Hourly outdoor score chart"></canvas><div class="chart-empty" id="homeHourlyEmpty">Weather data will appear here.</div></div><div class="chart-legend"><span><i class="legend-dot green"></i> Outdoor score</span><span class="legend-note">Heuristic estimate, not a safety guarantee</span></div></article>
+          <article class="card mission-card"><div class="card-heading"><div><span class="card-kicker">YOUR TINY MISSION</span><h3>Try something simple</h3></div><span class="mission-sun"><i data-lucide="sunrise"></i></span></div><div class="mission-image"></div><div class="mission-body"><span class="mission-label"><i data-lucide="leaf"></i> 10-MINUTE RESET</span><h4>Take the scenic way</h4><p>Walk without checking your phone. Find one new leaf, one bird sound, and one thing that makes you pause.</p><button class="button button-dark full-width" id="logQuickMission">I did this <i data-lucide="check-circle-2"></i></button></div></article>
+        </div>
+        <div class="quote-strip"><span class="quote-mark">“</span><p>Nature is not a place to visit. It is home.</p><span class="quote-author">GARY SNYDER</span><div class="quote-leaf"><i data-lucide="sprout"></i></div></div>
+      </section>
+
+      <!-- CONDITIONS -->
+      <section class="page" id="page-conditions" data-title="Live conditions">
+        <div class="page-intro"><div><div class="eyebrow"><span class="eyebrow-dot"></span> WEATHER, AIR & DAYLIGHT</div><h1>Know before<br><span>you go.</span></h1><p class="page-lead">A quick read of your local conditions, so your outdoor plans feel more thoughtful.</p></div><div class="data-source"><span class="live-pulse"></span><div><strong>Live conditions</strong><small>Powered by Open-Meteo</small></div></div></div>
+        <div class="conditions-hero card"><div class="conditions-hero-left"><span class="card-kicker" id="conditionsPlace">AHMEDABAD, INDIA</span><div class="big-weather"><span id="conditionsWeatherIcon">☀️</span><strong id="conditionsTemp">--°</strong></div><h2 id="conditionsText">Loading weather</h2><p>Feels like <strong id="conditionsFeels">--°C</strong>. Stay aware of changing conditions.</p><div class="weather-meta"><span><i data-lucide="wind"></i> <b id="conditionsWind">-- km/h</b> wind</span><span><i data-lucide="droplets"></i> <b id="conditionsHumidity">--%</b> humidity</span><span><i data-lucide="cloud-rain"></i> <b id="conditionsRain">--%</b> rain chance</span></div></div><div class="conditions-hero-art"></div></div>
+        <div class="condition-detail-grid">
+          <article class="card detail-metric"><div class="detail-icon air"><i data-lucide="wind"></i></div><div><small>AIR QUALITY INDEX</small><h3 id="detailAqi">--</h3><span id="detailAqiLabel" class="detail-status">Awaiting data</span><p>US AQI scale. Sensitive groups may need extra care when air quality worsens.</p></div></article>
+          <article class="card detail-metric"><div class="detail-icon uv"><i data-lucide="sun"></i></div><div><small>UV INDEX</small><h3 id="detailUv">--</h3><span id="detailUvLabel" class="detail-status">Awaiting data</span><p>At higher UV levels, seek shade and use sun protection.</p></div></article>
+          <article class="card detail-metric"><div class="detail-icon wind"><i data-lucide="wind"></i></div><div><small>WIND SPEED</small><h3 id="detailWind">--</h3><span class="detail-status">Current conditions</span><p>Wind can affect comfort, cycling, and some outdoor activities.</p></div></article>
+        </div>
+        <article class="card advice-card"><div class="advice-icon"><i data-lucide="shield-check"></i></div><div><span class="card-kicker">A SMALL SAFETY CHECK</span><h3 id="conditionsAdviceTitle">Check before you leave</h3><p id="conditionsAdvice">Live conditions and safety notes will show here when data loads.</p><div class="advice-tags"><span><i data-lucide="droplet"></i> Carry water</span><span><i data-lucide="sun"></i> Consider sun protection</span><span><i data-lucide="map-pin"></i> Choose a public route</span></div></div></article>
+      </section>
+
+      <!-- PLANNER -->
+      <section class="page" id="page-planner" data-title="Plan my outing">
+        <div class="page-intro planner-intro"><div><div class="eyebrow"><span class="eyebrow-dot"></span> A PLAN THAT GETS YOU OUT THERE</div><h1>Your next little<br><span>adventure.</span></h1><p class="page-lead">Tell us how you're feeling and how much time you have. We'll help you make it count.</p></div><div class="plan-intro-art"><i data-lucide="compass"></i><span>Small plans.<br>Good memories.</span></div></div>
+        <div class="planner-grid">
+          <div class="card planner-form-card">
+            <div class="card-heading"><div><span class="card-kicker">YOUR PREFERENCES</span><h3>Make it yours</h3></div><span class="form-step">01 <i data-lucide="arrow-right"></i> 02</span></div>
+            <form id="plannerForm">
+              <div class="form-grid">
+                <label class="field full-field"><span>City or location</span><div class="input-icon"><i data-lucide="map-pin"></i><input id="planCity" name="city" value="Ahmedabad" maxlength="80" required></div></label>
+                <label class="field"><span>Activity</span><select id="planActivity" name="activity"><option>Hiking / Walk</option><option>Gardening</option><option>Bird Watching</option><option>Outdoor Sports</option><option>Picnic</option><option>Yoga in Nature</option><option>Cycling</option><option>Photography Walk</option><option>Jogging</option></select></label>
+                <label class="field"><span>Current mood</span><select id="planMood" name="mood"><option>Okay</option><option>Stressed</option><option>Tired</option><option>Bored</option><option>Energetic</option><option>Need a reset</option></select></label>
+                <label class="field"><span>Time available</span><select id="planDuration" name="duration"><option value="15">15 minutes</option><option value="30">30 minutes</option><option value="45" selected>45 minutes</option><option value="60">1 hour</option><option value="90">1.5 hours</option><option value="120">2 hours</option></select></label>
+                <label class="field"><span>Fitness level</span><select id="planFitness" name="fitness"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+                <label class="field"><span>Going with</span><select id="planGroup" name="group"><option>Solo</option><option>Friends</option><option>Family with kids</option><option>Club or group</option></select></label>
+                <label class="field"><span>Today's vibe</span><select id="planVibe" name="vibe"><option>Relaxing</option><option>Adventurous</option><option>Social & fun</option><option>Mindful & meditative</option><option>Fitness-focused</option></select></label>
+              </div>
+              <div class="plan-conditions-mini"><span class="conditions-mini-icon"><i data-lucide="cloud-sun"></i></span><div><strong id="planWeatherLabel">Using your local conditions</strong><small id="planWeatherDetail">Live conditions will be included when available.</small></div><button type="button" class="mini-link" data-nav="conditions">View <i data-lucide="arrow-up-right"></i></button></div>
+              <button class="button button-primary full-width generate-button" type="submit" id="generatePlanButton"><i data-lucide="sparkles"></i> Create my outdoor plan <i data-lucide="arrow-right"></i></button>
+              <p class="form-note"><i data-lucide="shield-check"></i> Your preferences stay in this session. Your API key is not saved by this app.</p>
+            </form>
+          </div>
+          <div class="planner-result-column">
+            <div class="card ai-connect-card"><div class="ai-connect-top"><span class="ai-icon"><i data-lucide="brain-circuit"></i></span><span><strong>Open-model assistant</strong><small>Flexible AI, your choice</small></span><span class="connection-dot" id="aiConnectionDot"></span></div><p>Connect a model through OpenRouter for an AI-generated plan. Without a key, the planner still works in demo mode.</p><details class="ai-settings"><summary>AI connection settings <i data-lucide="chevron-down"></i></summary><div class="ai-settings-body"><label class="field"><span>OpenRouter API key</span><input type="password" id="openRouterKey" autocomplete="off" placeholder="sk-or-..." spellcheck="false"></label><label class="field"><span>Free models from open-weight families (verify license)</span><select id="aiModel"><option value="qwen/qwen3-4b:free">Loading model list...</option></select></label><label class="field"><span>Or enter a model ID</span><input type="text" id="manualModelId" placeholder="provider/model:free" autocomplete="off"></label><button type="button" class="button button-outline full-width" id="refreshModels"><i data-lucide="refresh-cw"></i> Refresh models</button><small id="modelHelp" class="muted-note">Live availability can change. Check the model card and license before making open-source claims.</small></div></details></div>
+            <div class="card plan-output-card" id="planOutputCard"><div class="plan-output-empty"><div class="empty-illustration"><i data-lucide="map"></i><span class="sparkle s1">✦</span><span class="sparkle s2">✳</span></div><span class="card-kicker">YOUR PERSONAL OUTDOOR PLAN</span><h3>Your next good moment<br>is waiting outside.</h3><p>Your plan will appear here with timed steps, what to bring, and a tiny screen-free challenge.</p><div class="empty-features"><span><i data-lucide="check-circle-2"></i> Realistic steps</span><span><i data-lucide="check-circle-2"></i> Safety reminders</span><span><i data-lucide="check-circle-2"></i> Screen-free mission</span></div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORECAST -->
+      <section class="page" id="page-forecast" data-title="Smart forecast">
+        <div class="page-intro"><div><div class="eyebrow"><span class="eyebrow-dot"></span> PICK YOUR MOMENT</div><h1>Good weather.<br><span>Better plans.</span></h1><p class="page-lead">Use the next few hours and days to find a comfortable time to be outdoors.</p></div><div class="data-source"><span class="live-pulse"></span><div><strong id="forecastPlace">Local forecast</strong><small>7-day outlook</small></div></div></div>
+        <div class="forecast-summary-grid"><div class="forecast-summary card"><span class="summary-icon"><i data-lucide="sun"></i></span><div><small>BEST DAY IN FORECAST</small><strong id="bestForecastDay">--</strong><span id="bestForecastNote">Waiting for forecast</span></div></div><div class="forecast-summary card"><span class="summary-icon"><i data-lucide="clock"></i></span><div><small>BEST REMAINING WINDOW</small><strong id="bestWindow">--</strong><span id="bestWindowNote">Based on hourly conditions</span></div></div><div class="forecast-summary card"><span class="summary-icon"><i data-lucide="cloud-rain"></i></span><div><small>RAIN OUTLOOK</small><strong id="rainOutlook">--</strong><span>Maximum daily chance</span></div></div></div>
+        <article class="card chart-card forecast-chart-card"><div class="card-heading"><div><span class="card-kicker">7-DAY OVERVIEW</span><h3>Temperature outlook</h3><p>Daily high and low temperatures in your selected city.</p></div><span class="chart-unit">°C</span></div><div class="large-chart-wrap"><canvas id="forecastChart"></canvas><div class="chart-empty" id="forecastChartEmpty">Live forecast will appear here.</div></div><div class="chart-legend"><span><i class="legend-dot orange"></i> Daily high</span><span><i class="legend-dot blue"></i> Daily low</span></div></article>
+        <div class="section-heading"><div><div class="eyebrow">DAY BY DAY</div><h2>Your week outside</h2></div><span class="subtle-note">Forecasts can change. Check again before leaving.</span></div>
+        <div class="forecast-days-grid" id="forecastDays"><div class="empty-state card">Getting the latest 7-day forecast...</div></div>
+        <div class="note-banner"><i data-lucide="info"></i><p><strong>A friendly reminder:</strong> the Outdoor Score is a simple planning estimate, not an official safety assessment. Follow local advisories and trust your judgement.</p></div>
+      </section>
+
+      <!-- PARKS -->
+      <section class="page" id="page-parks" data-title="Nearby parks">
+        <div class="page-intro"><div><div class="eyebrow"><span class="eyebrow-dot"></span> FIND YOUR PATCH OF GREEN</div><h1>Take the long way<br><span>through nature.</span></h1><p class="page-lead">Discover named parks and gardens from OpenStreetMap near your chosen city.</p></div><div class="park-search-top"><label class="search-field"><i data-lucide="search"></i><input id="parkCity" value="Ahmedabad" aria-label="Search parks by city"></label><button class="button button-primary" id="searchParks"><i data-lucide="search"></i> Find parks</button></div></div>
+        <div class="parks-layout"><div class="card map-card"><div class="card-heading"><div><span class="card-kicker">EXPLORE THE AREA</span><h3>Green spaces on the map</h3><p id="parkMapCaption">Search to discover parks nearby.</p></div><span class="map-legend"><i></i> Green spaces</span></div><div id="parkMap" class="park-map" role="application" aria-label="Map of nearby parks"><div class="map-placeholder"><i data-lucide="map-pinned"></i><span>Your park map will appear here</span><small>Search a city to load OpenStreetMap data.</small></div></div><div class="map-footer"><span><i data-lucide="layers"></i> Map tiles © OpenStreetMap contributors</span><span id="parkCount">0 places found</span></div></div><div class="park-list-column"><div class="park-list-header"><div><span class="card-kicker">NEAR YOU</span><h3>Places to explore</h3></div><select id="parkSort" aria-label="Sort parks"><option value="distance">Nearest first</option><option value="name">Name A–Z</option></select></div><div id="parkList" class="park-list"><div class="empty-state card"><i data-lucide="trees"></i><strong>Let's find some green</strong><span>Enter a city and search to discover nearby parks.</span></div></div></div></div>
+        <div class="note-banner"><i data-lucide="map-pin"></i><p>Park names and locations come from community-maintained OpenStreetMap data. Confirm opening hours, access, and safety locally before travelling.</p></div>
+      </section>
+
+      <!-- BINGO -->
+      <section class="page" id="page-bingo" data-title="Nature bingo">
+        <div class="bingo-hero"><div><div class="eyebrow"><span class="eyebrow-dot"></span> LOOK CLOSER. NOTICE MORE.</div><h1>Nature is full of<br><span>little surprises.</span></h1><p>Take this bingo card outside. Check off the little things you find, and let curiosity lead the way.</p><div class="bingo-hero-meta"><span><i data-lucide="target"></i> 9 things to find</span><span><i data-lucide="award"></i> +20 grass points</span><span><i data-lucide="smartphone"></i> Then put your phone away</span></div></div><div class="bingo-hero-art"><div class="bingo-orbit orbit-1"></div><div class="bingo-orbit orbit-2"></div><span class="bingo-leaf leaf-a">🍃</span><span class="bingo-leaf leaf-b">🌼</span><span class="bingo-leaf leaf-c">🦋</span><span class="bingo-leaf leaf-d">🐦</span></div></div>
+        <div class="bingo-layout"><article class="card bingo-card-main"><div class="card-heading"><div><span class="card-kicker">YOUR NATURE QUEST</span><h3>Today's bingo card</h3><p>Every outing is a chance to notice something new.</p></div><button class="button button-outline" id="newBingo"><i data-lucide="shuffle"></i> New card</button></div><div class="bingo-progress-line"><div class="progress-track"><span id="bingoProgressBar"></span></div><strong><span id="bingoCount">0</span>/9 found</strong></div><div id="bingoGrid" class="bingo-grid"></div><div id="bingoWin" class="bingo-win hidden"><i data-lucide="trophy"></i><div><strong>Bingo! You noticed the little things.</strong><span>+20 grass points added to your journey.</span></div><span class="win-sparkle">✦</span></div></article><aside class="bingo-side"><article class="card bingo-tip-card"><span class="tip-icon"><i data-lucide="eye"></i></span><span class="card-kicker">MINDFULNESS TIP</span><h3>Notice with all five senses.</h3><p>Look for colour, listen for natural sounds, feel the breeze, and pause long enough to notice what you usually miss.</p><div class="sense-row"><span>👁️ See</span><span>👂 Hear</span><span>🌬️ Feel</span></div></article><article class="card bingo-reward-card"><div class="reward-top"><i data-lucide="medal"></i><span>YOUR REWARD</span></div><strong>+20</strong><h3>Grass points</h3><p>Complete all 9 squares to celebrate your nature noticing.</p><div class="reward-leaves">🌿 🍀 🌱</div></article></aside></div>
+      </section>
+
+      <!-- PROGRESS -->
+      <section class="page" id="page-progress" data-title="My progress">
+        <div class="page-intro"><div><div class="eyebrow"><span class="eyebrow-dot"></span> SMALL STEPS ADD UP</div><h1>Your outdoor<br><span>story so far.</span></h1><p class="page-lead">Celebrate the time you made for yourself, one outing at a time.</p></div><button class="button button-outline" id="exportProgress"><i data-lucide="download"></i> Export my data</button></div>
+        <div class="progress-stats-grid"><article class="card progress-stat"><span class="stat-icon points"><i data-lucide="star"></i></span><small>TOTAL GRASS POINTS</small><strong id="progressPoints">0</strong><span class="stat-foot">Earned by showing up</span></article><article class="card progress-stat"><span class="stat-icon streak"><i data-lucide="flame"></i></span><small>CURRENT STREAK</small><strong><span id="progressStreak">0</span><em>days</em></strong><span class="stat-foot">Keep your rhythm going</span></article><article class="card progress-stat"><span class="stat-icon time"><i data-lucide="clock-3"></i></span><small>TIME OUTSIDE</small><strong><span id="progressHours">0</span><em>hrs</em></strong><span class="stat-foot">All logged outings combined</span></article><article class="card progress-stat"><span class="stat-icon outings"><i data-lucide="trees"></i></span><small>OUTINGS COMPLETED</small><strong id="progressOutings">0</strong><span class="stat-foot">Moments away from the screen</span></article></div>
+        <div class="two-col-grid progress-charts"><article class="card chart-card"><div class="card-heading"><div><span class="card-kicker">YOUR WEEK</span><h3>Minutes outdoors</h3><p>See how your outdoor time is building up.</p></div><span class="chart-unit">MIN</span></div><div class="large-chart-wrap"><canvas id="weeklyMinutesChart"></canvas><div class="chart-empty" id="weeklyMinutesEmpty">Log your first outing to begin your chart.</div></div><div class="goal-progress"><div><span>Weekly goal</span><strong><span id="weeklyMinutes">0</span> / <span id="weeklyGoalText">150</span> min</strong></div><div class="progress-track"><span id="weeklyGoalBar"></span></div><label class="goal-setting">Goal <select id="weeklyGoal"><option value="60">60 min</option><option value="90">90 min</option><option value="150" selected>150 min</option><option value="210">210 min</option><option value="300">300 min</option></select></label></div></article><article class="card mood-card"><div class="card-heading"><div><span class="card-kicker">CHECK IN WITH YOURSELF</span><h3>Your mood journey</h3><p>How you felt before and after an outing.</p></div><span class="mood-emoji">☺</span></div><div class="mood-main"><div class="mood-score"><span>LAST CHECK-IN</span><strong id="lastMoodLabel">Not logged yet</strong><small id="lastMoodDetail">Finish an outing to record how you feel.</small></div><div class="mood-face" id="lastMoodFace">🙂</div></div><div class="mood-scale"><span>😣</span><div class="mood-scale-track"><span id="moodScaleMarker"></span></div><span>🤩</span></div><div class="mood-card-foot"><i data-lucide="heart-handshake"></i> No judgement. Just notice how you feel.</div></article></div>
+        <div class="section-heading"><div><div class="eyebrow">LITTLE WINS</div><h2>Achievements</h2></div><span class="subtle-note">A reason to feel proud of the small things.</span></div><div id="achievementGrid" class="achievement-grid"></div>
+        <article class="card history-card"><div class="card-heading"><div><span class="card-kicker">LOOKING BACK</span><h3>Recent outings</h3><p>Your most recent logged outdoor moments.</p></div><button class="text-button" id="clearProgress">Clear history <i data-lucide="trash-2"></i></button></div><div id="outingHistory" class="outing-history"><div class="empty-state"><i data-lucide="footprints"></i><strong>Your story starts with one step.</strong><span>Generate a plan and log your first outing.</span></div></div></article>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="page" id="page-about" data-title="About & settings">
+        <div class="page-intro"><div><div class="eyebrow"><span class="eyebrow-dot"></span> A SMALL PROJECT WITH A SIMPLE IDEA</div><h1>Technology that<br><span>takes you outside.</span></h1><p class="page-lead">Touch Grass uses helpful technology for one purpose: making the offline world easier to enjoy.</p></div><div class="about-brand-mark"><i data-lucide="sprout"></i></div></div>
+        <div class="about-feature-grid"><article class="card about-feature"><span class="feature-icon park-icon"><i data-lucide="cloud-sun"></i></span><h3>Live local data</h3><p>Weather and air-quality information help you plan around current conditions instead of guessing.</p><span class="tech-tag">Open-Meteo</span></article><article class="card about-feature"><span class="feature-icon plan-icon"><i data-lucide="brain-circuit"></i></span><h3>Open-model AI</h3><p>Recommended: Gemma 4 26B A4B Instruct, whose official model card lists Apache 2.0. The app calls the hosted model through OpenRouter; verify the exact model and licence before publishing.</p><span class="tech-tag">OpenRouter</span></article><article class="card about-feature"><span class="feature-icon sun-icon"><i data-lucide="map-pinned"></i></span><h3>Real green spaces</h3><p>Find named parks and gardens from community-maintained map data near your selected city.</p><span class="tech-tag">OpenStreetMap</span></article></div>
+        <div class="settings-layout"><article class="card settings-card"><div class="card-heading"><div><span class="card-kicker">PERSONALISE YOUR SPACE</span><h3>Your profile</h3><p>These details are stored in this browser only.</p></div><span class="settings-icon"><i data-lucide="user-round"></i></span></div><label class="field"><span>Your display name</span><input id="profileNameInput" value="Tanmay" maxlength="40" placeholder="What should we call you?"></label><label class="field"><span>Your default city</span><input id="profileCityInput" value="Ahmedabad" maxlength="80" placeholder="City name"></label><label class="field"><span>Weekly outdoor goal</span><select id="profileWeeklyGoal"><option value="60">60 minutes</option><option value="90">90 minutes</option><option value="150" selected>150 minutes</option><option value="210">210 minutes</option><option value="300">300 minutes</option></select></label><button class="button button-primary" id="saveProfile"><i data-lucide="save"></i> Save preferences</button></article><article class="card privacy-card"><div class="privacy-illustration"><i data-lucide="shield-check"></i></div><span class="card-kicker">PRIVACY & TRANSPARENCY</span><h3>Your outdoors journey belongs to you.</h3><ul class="check-list"><li><i data-lucide="check-circle-2"></i><span>Profile and progress stay in your browser's local storage.</span></li><li><i data-lucide="check-circle-2"></i><span>Your OpenRouter API key is sent only with a plan request and is not saved by this app.</span></li><li><i data-lucide="check-circle-2"></i><span>Weather, map tiles, parks, and AI services require internet.</span></li><li><i data-lucide="check-circle-2"></i><span>External providers process requests under their own privacy policies.</span></li></ul><button class="button button-outline" id="downloadPrivacyData"><i data-lucide="download"></i> Download my local data</button></article></div>
+        <article class="card project-note"><div class="project-note-icon"><i data-lucide="heart"></i></div><div><span class="card-kicker">BUILT FOR THE TOUCH GRASS THEME</span><h3>Keep the screen part short.</h3><p>Plan quickly, then go enjoy the real world. The AI plan is a suggestion, not a substitute for local safety advice or your own judgement.</p></div></article>
+        <footer class="site-footer"><a class="brand footer-brand" href="#home" data-nav="home"><span class="brand-mark"><i data-lucide="sprout"></i></span><span class="brand-copy"><strong>touch grass</strong><small>GO OUTSIDE. FEEL BETTER.</small></span></a><span>Made for a greener tomorrow <i data-lucide="heart"></i></span><span>v1.0 · Student project</span></footer>
+      </section>
+    </main>
+  </div>
+</div>
+<div class="toast-region" id="toastRegion" aria-live="polite"></div>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
