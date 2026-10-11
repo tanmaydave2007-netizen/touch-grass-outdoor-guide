@@ -291,17 +291,17 @@ def api_weather():
         return cached_response
     except requests.Timeout:
         return jsonify({"error": "The weather service took too long. Please try again."}), 504
-    # except requests.RequestException:
-    #     return jsonify({"error": "Could not load live weather. Check your internet connection and try again."}), 502
-    # except (ValueError, KeyError, IndexError, TypeError):
-    #     return jsonify({"error": "The weather response was incomplete. Please try again in a moment."}), 502
+    except requests.RequestException:
+        return jsonify({"error": "Could not load live weather. Check your internet connection and try again."}), 502
+    except (ValueError, KeyError, IndexError, TypeError):
+        return jsonify({"error": "The weather response was incomplete. Please try again in a moment."}), 502
 
     
-    except requests.RequestException as e:
-      app.logger.exception("Weather API request failed for city=%s", city)
-    return jsonify({
-        "error": "Could not load live weather. Check your internet connection and try again."
-    }), 502
+    # except requests.RequestException as e:
+    #   app.logger.exception("Weather API request failed for city=%s", city)
+    # return jsonify({
+    #     "error": "Could not load live weather. Check your internet connection and try again."
+    # }), 502
 
 
 
