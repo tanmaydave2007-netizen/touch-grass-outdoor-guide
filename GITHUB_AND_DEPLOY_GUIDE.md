@@ -7,7 +7,7 @@
 3. Keep `SUBMISSION_DRAFT.md` as a draft until you replace the demo and GitHub placeholders and verify every claim.
 4. Confirm the Hacktoberfest Week 1 new-project eligibility rule. The official page says the project and repository must be started and completed during the challenge window. A redesign of a project made for another event may not qualify; ask the organizers if unsure.
 
-## Create a public GitHub repository
+## Create a public GitHub repository 
 
 1. Sign in to GitHub and create a **new public repository** named `touch-grass-outdoor-guide`.
 2. Do not initialize it with an extra README or license, because this project folder already contains a README.
