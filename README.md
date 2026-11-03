@@ -1,4 +1,4 @@
-## Performance notes
+## Performance notes 
 
 - Charts, the park map, and the live AI model list are loaded only when needed.
 - System fonts replace the remote Google Fonts request to improve initial rendering.
