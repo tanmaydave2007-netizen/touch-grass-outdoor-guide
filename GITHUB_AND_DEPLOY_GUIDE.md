@@ -3,7 +3,7 @@
 ## Before pushing code
 
 1. Run the app locally and generate at least one real plan using the exact open-weight model you intend to mention in your write-up.
-2. Ensure you did not put an API key into any source file or screenshot. This app's `.gitignore` excludes `.env`, but do not create a hard-coded key in `app.py` or JavaScript.
+2. Ensure you did not put an API key into any source file or screenshot. This app's `.gitignore` excludes `.env`, but do not create a hard-coded key in `app.py` or JavaScript. 
 3. Keep `SUBMISSION_DRAFT.md` as a draft until you replace the demo and GitHub placeholders and verify every claim.
 4. Confirm the Hacktoberfest Week 1 new-project eligibility rule. The official page says the project and repository must be started and completed during the challenge window. A redesign of a project made for another event may not qualify; ask the organizers if unsure.
 
