@@ -2,7 +2,7 @@
 
 - Charts, the park map, and the live AI model list are loaded only when needed.
 - System fonts replace the remote Google Fonts request to improve initial rendering.
-- Weather data is cached for 10 minutes per city, and the weather/air-quality requests run in parallel after city geocoding.
+- Weather data is cached for 10 minutes per city, and the weather/air-quality requests run in parallel after city geocoding. 
 - Translations and text scaling process only newly added fragments instead of repeatedly scanning the entire dashboard.
 
 # Touch Grass Outdoor Guide 🌿
